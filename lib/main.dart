@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/rendering.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
         // Den Hex-Wert #1776d6 in ein Color-Objekt umwandeln.
         // Der Präfix 0xFF ist notwendig, um einen 32-Bit ARGB-Wert darzustellen.
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF1776d6)),
-        useMaterial3: true, // Empfohlen für Material 3 Design
+        useMaterial3: true,
+        fontFamily: "Gabarito",
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -40,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // top bar with app name and profile logo btn
         child: Column(
           children: [
-            const SizedBox(height: 10),
+            const SizedBox(height: 50),
             SizedBox(
               width: screenWidth * 0.9,
               child: Row(
@@ -51,7 +52,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     "go2klo",
                     style: TextStyle(height: 1, fontSize: 30, fontWeight: FontWeight.bold),
                   ),
-                  ElevatedButton(onPressed: () {print("yo gurt");}, child: Text("profile"))
+                  ElevatedButton(
+                    onPressed: () {print("yo gurt");},
+                    child: Icon(
+                      Icons.account_circle, // Toiletten-Icon
+                      size: 36,
+                      color: Colors.blue.shade600, // Blaue Icon-Farbe
+                    ),
+                  )
                 ],
               ),
             ),
@@ -65,15 +73,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   // 'const' zur BoxDecoration hinzugefügt, um den Hinweis zu beheben.
                   // Die Opazität wurde auf 0.8 erhöht, damit der BorderRadius besser sichtbar ist.
                   decoration: const BoxDecoration( // 'const' hinzugefügt
-                    color: Colors.blue, // Farbe ohne Opazität für bessere Sichtbarkeit
+                    color: Color(0xFF90CAF9),
                     borderRadius: BorderRadius.all(Radius.circular(12.0)), // BorderRadius auf Radius.circular(12.0) geändert
                   ),
                   child: const Center( // 'const' hinzugefügt
                     child: Text(
-                      'Box mit Aspect Ratio und abgerundeten Ecken', // Text angepasst
+                      'Karte (Platzhalter)', // Text angepasst
                       style: TextStyle(
-                        color: Colors.white, // Textfarbe auf weiß geändert für besseren Kontrast
-                        fontSize: 18,
+                        color: Colors.blue, // Textfarbe auf weiß geändert für besseren Kontrast
+                        fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -126,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 20), // Abstand zwischen den zwei Schaltflächen
+                  const SizedBox(width: 10), // Abstand zwischen den zwei Schaltflächen
                   // Zweite Schaltfläche: In der Nähe finden
                   Expanded(
                     child: AspectRatio(
@@ -164,6 +172,135 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              width: screenWidth * 0.9, // Die Breite wird hier festgelegt
+              // Optional: color: Colors.amber, // Für Debugging, um die Größe zu sehen
+              child: Column( // Die Column ist jetzt der Child des Containers
+                // Kinder der Column hier
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        "Entdecke go2klo!",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 32,
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 20,),
+                  Column(
+                    children: [
+                      SizedBox(
+                        width: double.infinity,
+                        child: Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade200, // Heller Hintergrund für die Schaltfläche
+                                borderRadius: BorderRadius.all(Radius.circular(12.0))
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    height: 60,
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                      color: Colors.blue.shade100,
+                                      borderRadius: BorderRadius.circular(40),
+                                    ),
+                                    child: Icon(
+                                      Icons.leaderboard, // Standort-Icon
+                                      size: 36,
+                                      color: Colors.blue.shade600, // Blaue Icon-Farbe
+                                    ),
+                                  ),
+                                  SizedBox(width: 20,),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Leaderboard",
+                                          style: TextStyle(
+                                            fontSize: 28,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          "Miss dich mit anderen Nutzern.",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          ),
+                                        )
+                                      ]
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 10,),
+                            Container(
+                              padding: EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade200, // Heller Hintergrund für die Schaltfläche
+                                borderRadius: BorderRadius.all(Radius.circular(12.0))
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    height: 60,
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                      color: Colors.blue.shade100,
+                                      borderRadius: BorderRadius.circular(40),
+                                    ),
+                                    child: Icon(
+                                      Icons.event, // Standort-Icon
+                                      size: 36,
+                                      color: Colors.blue.shade600, // Blaue Icon-Farbe
+                                    ),
+                                  ),
+                                  SizedBox(width: 20,),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Klo des Tages",
+                                          style: TextStyle(
+                                            fontSize: 28,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          "Besuche die Toilette des Tages.",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          ),
+                                        )
+                                      ]
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 10,),
+                          ]
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),

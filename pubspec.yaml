@@ -19,3 +19,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: Gabarito # Dies ist der Name, den wir später im Code verwenden werden
+      fonts:
+        - asset: assets/fonts/gabarito.ttf
