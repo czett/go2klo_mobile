@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart'; // Beibehalten, falls benötigt
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +14,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // Den Hex-Wert #1776d6 in ein Color-Objekt umwandeln.
         // Der Präfix 0xFF ist notwendig, um einen 32-Bit ARGB-Wert darzustellen.
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF1776d6)),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          // seedColor: const Color.fromARGB(255, 28, 142, 255),
+          brightness: Brightness.light,
+        ),
         useMaterial3: true,
         fontFamily: "Gabarito", // Deine Schriftart Gabarito
       ),
@@ -44,8 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return <Widget>[
-      // Seite 1: Home-Seite mit deinen Layout-Elementen
-      SingleChildScrollView( // Ermöglicht das Scrollen, wenn der Inhalt zu lang ist
+
+      // HOME PAGE FOLLOWS
+
+      SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
@@ -65,9 +70,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         print("Profil Button geklickt!");
                       },
                       child: Icon(
-                        Icons.account_circle, // Profil-Icon
+                        Icons.account_circle,
                         size: 36,
-                        color: Theme.of(context).colorScheme.primary, // Blaue Icon-Farbe aus dem Theme
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     )
                   ],
@@ -81,14 +86,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   aspectRatio: 1.5, // Beispiel: 16:9 Verhältnis (Breite zu Höhe)
                   child: Container(
                     decoration: BoxDecoration(
-                      color: const Color(0xFF90CAF9), // Deine spezifische Farbe (Colors.blue.shade200)
+                      color: Theme.of(context).colorScheme.primaryContainer,
                       borderRadius: BorderRadius.all(Radius.circular(12.0)),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         'Karte (Platzhalter)',
                         style: TextStyle(
-                          color: Colors.white, // Farbe angepasst für besseren Kontrast
+                          color: Theme.of(context).colorScheme.surface, // Farbe angepasst für besseren Kontrast
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                         ),
@@ -116,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Colors.white, // Heller Hintergrund
+                              color: Theme.of(context).colorScheme.surface, // Heller Hintergrund
                               borderRadius: BorderRadius.all(Radius.circular(12.0)),
                             ),
                             child: Column(
@@ -125,14 +130,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Icon(
                                   Icons.wc, // Toiletten-Icon
                                   size: 36,
-                                  color: Theme.of(context).colorScheme.primary, // Blaue Icon-Farbe
+                                  color: Colors.blue, // Blaue Icon-Farbe
                                 ),
                                 const SizedBox(height: 8),
                                 Text(
                                   'Toiletten bewerten',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    color: Theme.of(context).colorScheme.primary, // Blaue Textfarbe
+                                    color: Colors.blue, // Blaue Textfarbe
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -156,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Colors.white, // Heller Hintergrund
+                              color: Theme.of(context).colorScheme.surface, // Heller Hintergrund
                               borderRadius: BorderRadius.all(Radius.circular(12.0)),
                             ),
                             child: Column(
@@ -165,14 +170,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Icon(
                                   Icons.location_on, // Standort-Icon
                                   size: 36,
-                                  color: Theme.of(context).colorScheme.primary, // Blaue Icon-Farbe
+                                  color: Colors.blue, // Blaue Icon-Farbe
                                 ),
                                 const SizedBox(height: 8),
                                 Text(
                                   'In der Nähe finden',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    color: Theme.of(context).colorScheme.primary, // Blaue Textfarbe
+                                    color: Colors.blue, // Blaue Textfarbe
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -195,7 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.surface,
                         borderRadius: const BorderRadius.all(Radius.circular(12.0)),
                       ),
                       child: Row(
@@ -205,13 +210,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: 60,
                             width: 60,
                             decoration: BoxDecoration(
-                              color: Colors.blue.shade100,
+                              color: Theme.of(context).colorScheme.primaryContainer,
                               borderRadius: BorderRadius.circular(40),
                             ),
                             child: Icon(
                               Icons.leaderboard, // Icon für Leaderboard
                               size: 36,
-                              color: Colors.blue.shade600,
+                              color: Colors.blue,
                             ),
                           ),
                           const SizedBox(width: 20), // Abstand zwischen Icon und Text
@@ -242,7 +247,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.surface,
                         borderRadius: const BorderRadius.all(Radius.circular(12.0)),
                       ),
                       child: Row(
@@ -252,13 +257,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: 60,
                             width: 60,
                             decoration: BoxDecoration(
-                              color: Colors.blue.shade100,
+                              color: Theme.of(context).colorScheme.primaryContainer,
                               borderRadius: BorderRadius.circular(40),
                             ),
                             child: Icon(
                               Icons.event, // Icon für Klo des Tages
                               size: 36,
-                              color: Colors.blue.shade600,
+                              color: Colors.blue,
                             ),
                           ),
                           const SizedBox(width: 20), // Abstand zwischen Icon und Text
@@ -293,29 +298,24 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-
-      // Seite 2: Eine Beispielseite
       const Center(
         child: Text(
           'Suchen Seite (Platzhalter)',
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ),
-      // Seite 3: Eine Beispielseite
       const Center(
         child: Text(
           'Hinzufügen Seite (Platzhalter)',
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ),
-      // Seite 4: Eine Beispielseite
       const Center(
         child: Text(
           'Benachrichtigungen Seite (Platzhalter)',
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ),
-      // Seite 5: Eine Beispielseite
       const Center(
         child: Text(
           'Profil Seite (Platzhalter)',
@@ -325,7 +325,6 @@ class _MyHomePageState extends State<MyHomePage> {
     ];
   }
 
-  // Callback-Funktion, die aufgerufen wird, wenn ein Tab getippt wird
   void _onDestinationSelected(int index) {
     setState(() {
       _selectedIndex = index;
@@ -335,17 +334,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
-      body: _pages(context)[_selectedIndex], // Zeigt die aktuell ausgewählte Seite an
+      backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
+      body: _pages(context)[_selectedIndex],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
           labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
           height: 85,
           indicatorColor: Colors.transparent,
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).colorScheme.surface,
         ),
         child: NavigationBar(
-          // indicatorShape: CircleBorder(),
           selectedIndex: _selectedIndex,
           onDestinationSelected: _onDestinationSelected,
           surfaceTintColor: Colors.transparent,
